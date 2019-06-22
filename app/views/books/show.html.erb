@@ -5,10 +5,19 @@
       <div class="col-xs-9">
     		<h2>Book detail</h2>
     		<table class="table">
-    		  <tbody>
+    		  <thead>
             <tr>
-              <td>img atode</td>
-              <td>link to title</td>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th colspan="3"></th>
+              </tr>
+            </thead>
+          <tbody>
+            <tr>
+              <td>
+                <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback:"Noimage.png", size: '40x40' %></td>
+              <td></td>
               <td>body</td>
             </tr>
           </tbody>

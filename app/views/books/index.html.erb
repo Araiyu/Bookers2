@@ -16,7 +16,8 @@
 				  <tbody>
 				      	<% @books.each do |book| %>
 				      <tr>
-				        <td>img atode iruyou
+				        <td>
+				        	<%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback:"Noimage.png", size: '40x40' %>
 				      	</td>
 				        <td>
 				        	<%= link_to book.title, book_path(book) %>
