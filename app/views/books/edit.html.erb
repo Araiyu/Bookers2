@@ -1,39 +1,21 @@
-<body>
-  	<div class="body">
+<div class="body">
       <div class="container">
-        <p id="notice"></p>
-      	<h2>User info</h2>
-          <%= form_for(@post) do |f| %>
+      	<h2>Editing Book</h2>
+          <%= form_for(@book) do |f| %>
             <div class="field">
-            <label for="user_name">Name</label>
-             <%= f.text_field :name %>
-              <input class="name" type="text" value="aaa" name="user[name]" id="user_name">
-            </div>
-
-            <div class="field">
-            <label for="user_image">Image</label>
-            <%= f.text_area :body %>
+              <label>Title</label>
+                <%= f.text_field :title %>
             </div>
             <div class="field">
-            <label for="user_introduction">Introduction</label>
-            <textarea class="introduction" name="user[introduction]" id="user_introduction">asd</textarea>
+              <label for="book_body">Opinion</label>
+                <%= f.text_area :body %>
             </div>
-
               <div class="actions">
-                <%= f.submit '保存' %>    
-              <input type="submit" name="commit" value="Update User" data-disable-with="Update User">
+                <%= f.submit 'Update Book' %>
               <% end %>
-            </div>
-          </form>
+              </div>
+              <%= link_to "show", book_path(@book.id) %>
+              |
+              <%= link_to "back", books_path %>
         </div>
       </div>
-    <footer>
-      <div class="container">
-  	     <div class="row">
-    	   <div class="col-xs-3 col-xs-offset-9">
-    		    <p>CopyRight Infratop.inc</p>
-    	   </div>
-        </div>
-      </div>
-    </footer>
-</body>

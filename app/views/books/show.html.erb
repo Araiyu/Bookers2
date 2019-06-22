@@ -16,9 +16,20 @@
           <tbody>
             <tr>
               <td>
-                <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback:"Noimage.png", size: '40x40' %></td>
-              <td></td>
-              <td>body</td>
+                <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback:"Noimage.png", size: '40x40' %>
+              </td>
+              <td>
+                 <%= @book.title %>
+              </td>
+              <td>
+                <%= @book.body %>
+              </td>
+                <td><%= link_to "Edit", edit_book_path, class: "btn-sm btn-success" %>
+              </td>
+              <td>
+                <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                </td>
+              </td>
             </tr>
           </tbody>
         </table>
