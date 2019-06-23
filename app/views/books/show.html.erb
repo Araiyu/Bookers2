@@ -1,7 +1,7 @@
 <div class="body">
   <div class="container">
     <div class="row">
-   <%= render 'users/list', user: current_user, book: @book %>
+   <%= render 'users/list', user: @book.user, book: @book %>
       <div class="col-xs-9">
     		<h2>Book detail</h2>
     		<table class="table">
@@ -16,7 +16,10 @@
           <tbody>
             <tr>
               <td>
+                <%= link_to user_path(@book.user) do %>
                 <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, fallback:"Noimage.png", size: '40x40' %>
+                <%= @book.user.name %>
+                <% end %>
               </td>
               <td>
                  <%= @book.title %>
@@ -24,10 +27,16 @@
               <td>
                 <%= @book.body %>
               </td>
-                <td><%= link_to "Edit", edit_book_path, class: "btn-sm btn-success" %>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Edit", edit_book_path, class: "btn-sm btn-success" %>
+                  <% end %>
               </td>
               <td>
-                <td><%= link_to "Destroy", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                <td>
+                  <% if @book.user == current_user %>
+                    <%= link_to "Destroy", book_path(@book), method: :delete, class: "btn-sm btn-danger" %>
+                    <% end %>
                 </td>
               </td>
             </tr>

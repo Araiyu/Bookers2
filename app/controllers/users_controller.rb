@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :authenticate_user!
+before_action :check, only:[:update, :edit]
 def create
 	user = User.new(user_params)
 	user.save
@@ -24,11 +25,12 @@ def edit
 end
 
 def update
-	@user = User.find(params[:id])
-    if @user.update(user_params)
-        redirect_to user_path(@user)
-    else
-    	render :edit
+	user = User.find(current_user.id)
+    if user.update(user_params)
+    	flash[:notice] = "successfully"
+        redirect_to user_path(current_user)
+    # else
+
     end
 end
 
@@ -39,6 +41,11 @@ def book_params
 end
 def user_params
 	params.require(:user).permit(:name, :introduction, :profile_image)
-
+end
+def check
+	user = User.find(params[:id])
+	if current_user != user
+		redirect_to user_path(current_user)
+	end
 end
 end

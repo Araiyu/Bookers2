@@ -33,6 +33,19 @@
     </nav>
   </div>
 </header>
+
+<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+<% if flash[:alart] %>
+      <div class="flash">
+        <%= flash[:alart] %>
+      </div>
+    <% end %>
+
     <%= yield %>
        <footer>
   <div class="container">
