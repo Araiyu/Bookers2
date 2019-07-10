@@ -29,8 +29,6 @@ def update
     if user.update(user_params)
     	flash[:notice] = "successfully"
         redirect_to user_path(current_user)
-    # else
-
     end
 end
 
